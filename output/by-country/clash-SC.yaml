@@ -5,25 +5,46 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇸🇨 SC 01 - xiaohe
-  type: vmess
-  server: 156.226.183.181
-  port: 54321
-  uuid: d3bcc1f1-6294-4f68-bcf3-c3bcb2001520
-  alterId: 0
-  cipher: auto
+  type: vless
+  server: 172.67.174.249
+  port: 443
+  uuid: 26b35808-f1e1-4b97-8c69-46796f058d8b
   udp: true
-  tls: false
+  tls: true
   skip-cert-verify: true
+  servername: ezaccess-project-9138d4.5f6on.workers.dev
+  network: ws
+  ws-opts:
+    path: /eyJqdW5rIjoicG9pMkt4TDY2TVNtRSIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=
+    headers:
+      Host: ezaccess-project-9138d4.5f6on.workers.dev
 - name: 🇸🇨 SC 02 - xiaohe
-  type: vmess
-  server: 156.226.183.181
-  port: 54321
-  uuid: d3bcc1f1-6294-4f68-bcf3-c3bcb2001520
-  alterId: 0
-  cipher: auto
+  type: vless
+  server: cf.090227.xyz
+  port: 443
+  uuid: 5b374761-e26c-4117-8af8-5c637992fcbf
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  servername: vls.baiyi.cloudns.org
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: vls.baiyi.cloudns.org
+- name: 🇸🇨 SC 03 - xiaohe
+  type: vless
+  server: 154.197.64.30
+  port: 8880
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
   udp: true
   tls: false
   skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: vms.lifetime36.workers.dev
 proxy-groups:
 - name: PROXIES
   type: select
@@ -31,6 +52,7 @@ proxy-groups:
   - AUTO
   - 🇸🇨 SC 01 - xiaohe
   - 🇸🇨 SC 02 - xiaohe
+  - 🇸🇨 SC 03 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
@@ -38,5 +60,6 @@ proxy-groups:
   proxies:
   - 🇸🇨 SC 01 - xiaohe
   - 🇸🇨 SC 02 - xiaohe
+  - 🇸🇨 SC 03 - xiaohe
 rules:
 - MATCH,PROXIES
